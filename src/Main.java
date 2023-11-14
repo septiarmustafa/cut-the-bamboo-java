@@ -5,8 +5,42 @@ public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        cutBamboos(input);
-        System.out.println(findMin(new Integer[] {0, 2, 4, -1, -3, -4}));
+        while(true) {
+            System.out.println("\nMenu");
+            System.out.println("1. [Challenge 8.4] Angka Terbesar dan Terkecil");
+            System.out.println("2. [Challenge 8.5] Mencari angka minus terbesar yang hilang");
+            System.out.println("3. Live Code - Cut The Bamboo");
+            System.out.println("4. Exit");
+            System.out.print("Choose menu: ");
+            int menu = input.nextInt();
+
+            if (menu == 1) {
+                // [Challenge 8.4] Angka Terbesar dan Terkecil
+                System.out.print("Input array length: ");
+                int arr_count = input.nextInt();
+                System.out.printf("Input %s array item: \n", arr_count);
+                int [] arr = new int[arr_count];
+                for (int i = 0; i < arr_count ; i++) {
+                    arr[i] = input.nextInt();
+                }
+                findMinMax(arr);
+
+            } else if (menu == 2) {
+                // [Challenge 8.5] Mencari angka minus terbesar yang hilang
+                System.out.println(findMin(new Integer[] {0, 2, 4, -1, -3, -4}));
+
+            } else if (menu == 3) {
+                // Live Code - Cut The Bamboo
+                input.nextLine();
+                cutBamboos(input);
+
+            } else if (menu == 4) {
+                System.out.println("Exiting Program...");
+                break;
+            } else {
+                System.out.println("Invalid input!\n");
+            }
+        }
     }
 
     public static void cutBamboos(Scanner input) {
@@ -61,4 +95,20 @@ public class Main {
 
         return 0;
     }
+
+    public static void findMinMax(int[] arr) {
+
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < arr.length; i++){
+            if(arr[i] < min) {
+                min = arr[i];
+            }
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        System.out.printf("Max : %d Min : %d",max,min);
+    }
 }
+

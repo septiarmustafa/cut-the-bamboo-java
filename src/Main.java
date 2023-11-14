@@ -6,6 +6,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
 
         cutBamboos(input);
+        System.out.println(findMin(new Integer[] {0, 2, 4, -1, -3, -4}));
     }
 
     public static void cutBamboos(Scanner input) {
@@ -34,7 +35,7 @@ public class Main {
         } while (cycleCuts > 0);
     }
 
-    public static void loopingBamboos (Integer [] intArrBamboos){
+    public static void loopingBamboos (Integer [] intArrBamboos) {
         for (int i = 0; i < intArrBamboos.length; i++) {
             System.out.print("|");
             for (int j = 0; j < intArrBamboos[i]; j++) {
@@ -43,5 +44,21 @@ public class Main {
             System.out.println();
         }
         System.out.println();
+    }
+    public static Integer findMin(Integer[] arr) {
+        Arrays.sort(arr);
+        int min = arr[0];
+
+        for (int i=-1; i>=min; i--) {
+            boolean contains = false;
+            for (int n : arr) {
+                if (n == i) {
+                    contains = true;
+                }
+            }
+            if (!contains) return i;
+        }
+
+        return 0;
     }
 }
